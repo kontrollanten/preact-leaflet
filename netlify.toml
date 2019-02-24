@@ -1,0 +1,6 @@
+[Settings]
+
+[build]
+  command = "yarn demo:build"
+  publish = "dist/"
+
