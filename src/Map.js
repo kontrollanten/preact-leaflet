@@ -14,6 +14,12 @@ class Map extends Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.center !== this.props.center) {
+      this.state.map.panTo(this.props.center);
+    }
+  }
+
   componentWillUnmount() {
     this.state.map.remove();
   }

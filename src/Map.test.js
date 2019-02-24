@@ -57,6 +57,15 @@ describe('Map', () => {
     expect(leaflet.Map).to.have.been.calledWithExactly(sinon.match.any, sinon.match(mapOptions));
   });
 
+  it('should update the center position upon changing center prop', () => {
+    const wrapper = mount(<Map />);
+
+    const center = { lat: 56.38, lng: 17.98 };
+    wrapper.setProps({ center });
+
+    expect(wrapper.state('map').getCenter()).to.deep.include(center);
+  });
+
   it('should destroy the map upon unmount', () => {
     sandbox.spy(leaflet.Map.prototype, 'remove');
     const wrapper = mount(<Map />);
