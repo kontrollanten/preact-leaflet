@@ -57,6 +57,29 @@ describe('Map', () => {
     expect(leaflet.Map).to.have.been.calledWithExactly(sinon.match.any, sinon.match(mapOptions));
   });
 
+  it('should call setBounds if bounds are given', () => {
+    const bounds = leaflet.latLngBounds(
+      leaflet.latLng(59.362774, 18.116663116961718),
+      leaflet.latLng(59.34308605870865, 18.081772942096),
+    );
+    sandbox.stub(leaflet.Map.prototype, 'fitBounds');
+    mount(<Map bounds={bounds} center={[59.35, 18.10]} />);
+
+    expect(leaflet.Map.prototype.fitBounds).to.have.been.calledWithExactly(bounds);
+  });
+
+  it('should update bounds when changing bounds prop', () => {
+    const wrapper = mount(<Map center={[59.35, 18.10]} />);
+    const bounds = leaflet.latLngBounds(
+      leaflet.latLng(59.362774, 18.116663116961718),
+      leaflet.latLng(59.34308605870865, 18.081772942096),
+    );
+
+    sandbox.stub(leaflet.Map.prototype, 'fitBounds');
+    wrapper.setProps({ bounds });
+    expect(leaflet.Map.prototype.fitBounds).to.have.been.calledWithExactly(bounds);
+  });
+
   it('should update the center position upon changing center prop', () => {
     const wrapper = mount(<Map />);
 
