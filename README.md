@@ -1,0 +1,1 @@
+# leaflet-preact [![codecov](https://codecov.io/gh/kontrollanten/leaflet-preact/branch/master/graph/badge.svg)](https://codecov.io/gh/kontrollanten/leaflet-preact)[![CircleCI](https://circleci.com/gh/kontrollanten/leaflet-preact.svg?style=svg)](https://circleci.com/gh/kontrollanten/leaflet-preact)
