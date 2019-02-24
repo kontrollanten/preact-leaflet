@@ -1,6 +1,5 @@
 import { h, Component } from 'preact';
 import leaflet from 'leaflet';
-import { TileLayer } from './TileLayer';
 
 class Map extends Component {
   componentDidMount() {
@@ -25,16 +24,23 @@ class Map extends Component {
     ];
 
     return Object.keys(this.props)
-      .filter(prop => (leafletOptions ? mapOptions.indexOf(prop) !== -1 : mapOptions.indexOf(prop) === -1))
+      .filter(prop => (leafletOptions
+        ? mapOptions.indexOf(prop) !== -1
+        : mapOptions.indexOf(prop) === -1
+      ))
       .reduce((props, prop) => ({ ...props, [prop]: this.props[prop] }), {});
   }
 
   render() {
-    const children = this.props.children.map(child => Object.assign(child, { attributes: { ...child.attributes, leafletMap: this.state.map } }));
+    const children = this.props.children
+      .map(child => Object.assign(
+        child,
+        { attributes: { ...child.attributes, leafletMap: this.state.map } },
+      ));
 
     return (
       <div {...this.getProps()} ref={(ref) => { this.ref = ref; }}>
-        {!!this.state.map && this.props.children}
+        {!!this.state.map && children}
       </div>
     );
   }

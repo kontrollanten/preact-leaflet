@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "demo": "parcel e2e/index.html",
+    "lint": "eslint src e2e",
     "test": "jest"
   },
   "jest": {

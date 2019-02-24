@@ -36,9 +36,10 @@ describe('TileLayer', () => {
       attribution: 'hell',
     };
     sandbox.spy(leaflet, 'TileLayer');
-    const wrapper = mount(<TileLayer {...defaultProps} {...options} />);
+    mount(<TileLayer {...defaultProps} {...options} />);
 
-    expect(leaflet.TileLayer).to.have.been.calledWithExactly(sinon.match.string, sinon.match(options));
+    expect(leaflet.TileLayer).to.have.been
+      .calledWithExactly(sinon.match.string, sinon.match(options));
   });
 
   it('should remove TileLayer from map upon unmount', () => {
