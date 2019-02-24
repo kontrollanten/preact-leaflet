@@ -11,7 +11,7 @@ class Map extends Component {
     } = this.getProps({ leafletOptions: true });
 
     this.setState({
-      map: new leaflet.Map(this.ref, options).setView(center, zoom),
+      map: new leaflet.Map(this.ref, { center, zoom, ...options }),
     });
   }
 
