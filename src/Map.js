@@ -4,18 +4,29 @@ import leaflet from 'leaflet';
 class Map extends Component {
   componentDidMount() {
     const {
+      bounds,
       zoom = 6,
       ...options
     } = this.getProps({ leafletOptions: true });
 
+    const map = new leaflet.Map(this.ref, { zoom, ...options });
+
+    if (bounds) {
+      map.fitBounds(bounds);
+    }
+
     this.setState({
-      map: new leaflet.Map(this.ref, { zoom, ...options }),
+      map,
     });
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.center !== this.props.center) {
       this.state.map.panTo(this.props.center);
+    }
+
+    if (prevProps.bounds !== this.props.bounds) {
+      this.state.map.fitBounds(this.props.bounds);
     }
   }
 
@@ -28,6 +39,7 @@ class Map extends Component {
       'attributionControl',
       'bounceAtZoomLimits',
       'boundsOptions',
+      'bounds',
       'crs',
       'center',
       'easeLinearity',
