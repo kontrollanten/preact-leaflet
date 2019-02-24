@@ -6,7 +6,7 @@ class Map extends Component {
   componentDidMount() {
     const {
       center = [59.3367, 18.0667],
-      zoom = 12,
+      zoom = 6,
       ...options
     } = this.getProps({ leafletOptions: true });
 
