@@ -21,7 +21,35 @@ describe('Map', () => {
 
   it('should map accurate props to map options', () => {
     const mapOptions = {
+      attributionControl: true,
+      bounceAtZoomLimits: true,
       boundsOptions: { paddingTopLeft: [0, 1] },
+      crs: [],
+      easeLinearity: false,
+      fadeAnimation: false,
+      inertia: false,
+      inertiaDeceleration: 300,
+      inertiaMaxSpeed: Infinity,
+      keyboard: true,
+      keyboardPanDelta: 10,
+      layers: [],
+      markerZoomAnimation: true,
+      maxBounds: 12,
+      maxBoundsViscosity: 0.1,
+      maxZoom: 3,
+      minZoom: 2,
+      preferCanvas: true,
+      renderer: false,
+      scrollWheelZoom: false,
+      tap: true,
+      tapTolerance: 10,
+      touchZoom: false,
+      transform3DLimit: true,
+      wheelDebounceTime: 200,
+      wheelPxPerZoomLevel: 1,
+      worldCopyJump: true,
+      zoomAnimation: false,
+      zoomControl: false,
     };
     sandbox.stub(leaflet, 'Map').returns({ setView: () => null });
     const wrapper = mount(<Map {...mapOptions} nonMapOption />);
