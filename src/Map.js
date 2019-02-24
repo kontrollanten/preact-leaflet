@@ -4,13 +4,12 @@ import leaflet from 'leaflet';
 class Map extends Component {
   componentDidMount() {
     const {
-      center = [59.3367, 18.0667],
       zoom = 6,
       ...options
     } = this.getProps({ leafletOptions: true });
 
     this.setState({
-      map: new leaflet.Map(this.ref, { center, zoom, ...options }),
+      map: new leaflet.Map(this.ref, { zoom, ...options }),
     });
   }
 
