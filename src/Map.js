@@ -3,11 +3,11 @@ import leaflet from 'leaflet';
 
 class Map extends Component {
   componentDidMount() {
-    const { center, zoom, ...options } = {
-      center: [59.3367, 18.0667],
-      zoom: 12,
-      ...this.getProps({ leafletOptions: true }),
-    };
+    const {
+      center = [59.3367, 18.0667],
+      zoom = 12,
+      ...options
+    } = this.getProps({ leafletOptions: true });
 
     this.setState({
       map: new leaflet.Map(this.ref, options).setView(center, zoom),
@@ -20,7 +20,37 @@ class Map extends Component {
 
   getProps({ leafletOptions = false } = {}) {
     const mapOptions = [
+      'attributionControl',
+      'bounceAtZoomLimits',
       'boundsOptions',
+      'crs',
+      'center',
+      'easeLinearity',
+      'fadeAnimation',
+      'inertia',
+      'inertiaDeceleration',
+      'inertiaMaxSpeed',
+      'keyboard',
+      'keyboardPanDelta',
+      'markerZoomAnimation',
+      'maxBounds',
+      'maxBoundsViscosity',
+      'maxZoom',
+      'minZoom',
+      'layers',
+      'preferCanvas',
+      'renderer',
+      'scrollWheelZoom',
+      'tap',
+      'tapTolerance',
+      'touchZoom',
+      'transform3DLimit',
+      'wheelDebounceTime',
+      'wheelPxPerZoomLevel',
+      'worldCopyJump',
+      'zoom',
+      'zoomAnimation',
+      'zoomControl',
     ];
 
     return Object.keys(this.props)
