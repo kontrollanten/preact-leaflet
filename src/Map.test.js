@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
 import leaflet from 'leaflet';
@@ -24,7 +24,7 @@ describe('Map', () => {
       boundsOptions: { paddingTopLeft: [0, 1] },
     };
     sandbox.stub(leaflet, 'Map').returns({ setView: () => null });
-    const wrapper = mount(<Map {...mapOptions} nonMapOption />);
+    mount(<Map {...mapOptions} nonMapOption />);
 
     expect(leaflet.Map).to.have.been.calledWithExactly(sinon.match.any, sinon.match(mapOptions));
   });
@@ -44,7 +44,7 @@ describe('Map', () => {
   });
 
   it('should add leafletMap prop TileLayer children to make it attach to map', () => {
-    const spy = sandbox.spy(leaflet, 'TileLayer');
+    sandbox.spy(leaflet, 'TileLayer');
     const wrapper = mount(<Map><TileLayer url="url" /></Map>);
 
     expect(wrapper.html()).to.contain('leaflet-tile-pane');
