@@ -51,7 +51,7 @@ describe('Map', () => {
       zoomAnimation: false,
       zoomControl: false,
     };
-    sandbox.stub(leaflet, 'Map').returns({ setView: () => null });
+    sandbox.stub(leaflet, 'Map').returns({ on: () => null, setView: () => null });
     mount(<Map {...mapOptions} nonMapOption />);
 
     expect(leaflet.Map).to.have.been.calledWithExactly(sinon.match.any, sinon.match(mapOptions));
@@ -87,6 +87,46 @@ describe('Map', () => {
     wrapper.setProps({ center });
 
     expect(wrapper.state('map').getCenter()).to.deep.include(center);
+  });
+
+  it('should add event listeners for each prop prefixed with on upon mount', () => {
+    const onSomething = () => null;
+    sandbox.spy(leaflet.Map.prototype, 'on');
+    mount(<Map onSomething={onSomething} />);
+
+    expect(leaflet.Map.prototype.on).to.have.been.calledWith('something', onSomething);
+  });
+
+  it('should add event listeners for each prop prefixed with on upon update', () => {
+    const wrapper = mount(<Map />);
+
+    sandbox.spy(wrapper.state('map'), 'on');
+    const onSomething = () => null;
+    wrapper.setProps({ onSomething });
+
+    expect(wrapper.state('map').on).to.have.been.calledWith('something', onSomething);
+  });
+
+  it('should remove event listeners when a prop is removed', () => {
+    const onElse = () => null;
+    const wrapper = mount(<Map onElse={onElse} />);
+
+    sandbox.spy(wrapper.state('map'), 'off');
+    wrapper.setProps({ onElse: undefined });
+
+    expect(wrapper.state('map').off).to.have.been.calledWith('else', onElse);
+  });
+
+  it('should remove event listeners upon unmount', () => {
+    const onZoom = () => null;
+    sandbox.spy(leaflet.Map.prototype, 'on');
+    const wrapper = mount(<Map onZoom={onZoom} />);
+    expect(leaflet.Map.prototype.on.getCalls().length).to.be.greaterThan(0);
+
+    sandbox.spy(leaflet.Map.prototype, 'off');
+    wrapper.unmount();
+
+    expect(leaflet.Map.prototype.off).to.have.been.calledWithExactly('zoom', onZoom);
   });
 
   it('should destroy the map upon unmount', () => {
