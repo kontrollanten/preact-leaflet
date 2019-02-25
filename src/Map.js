@@ -1,13 +1,6 @@
 import { h, Component } from 'preact';
 import leaflet from 'leaflet';
-
-const getProvidedEventListeners = props => Object.keys(props)
-  .filter(prop => prop.match(/on[A-Z](.*)/))
-  .map(prop => ({
-    callback: props[prop],
-    event: prop.slice(2).replace(/^[A-Z]/, e => e.slice(0, 1).toLowerCase()),
-    prop,
-  }));
+import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 
 class Map extends Component {
   componentDidMount() {
@@ -19,10 +12,7 @@ class Map extends Component {
 
     const map = new leaflet.Map(this.ref, { zoom, ...options });
 
-    getProvidedEventListeners(this.props)
-      .forEach(({ event, callback }) => {
-        map.on(event, callback);
-      });
+    addListenersFromProps(map, this.props);
 
     if (bounds) {
       map.fitBounds(bounds);
@@ -42,24 +32,17 @@ class Map extends Component {
       this.state.map.fitBounds(this.props.bounds);
     }
 
-    getProvidedEventListeners(this.props)
-      .filter(({ prop }) => !prevProps[prop])
-      .forEach(({ event, callback }) => {
-        this.state.map.on(event, callback);
-      });
+    addListenersFromProps(this.state.map, this.props, {
+      filter: ({ prop }) => !prevProps[prop],
+    });
 
-    getProvidedEventListeners(prevProps)
-      .filter(({ prop }) => !this.props[prop])
-      .forEach(({ event, callback }) => {
-        this.state.map.off(event, callback);
-      });
+    removeListenersFromProps(this.state.map, prevProps, {
+      filter: ({ prop }) => !this.props[prop],
+    });
   }
 
   componentWillUnmount() {
-    getProvidedEventListeners(this.props)
-      .forEach(({ callback, event }) => {
-        this.state.map.off(event, callback);
-      });
+    removeListenersFromProps(this.state.map, this.props);
     this.state.map.remove();
   }
 
