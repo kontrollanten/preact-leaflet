@@ -1,5 +1,5 @@
 import { Component } from 'preact';
-import leaflet from 'leaflet';
+import { Marker as LeafletMarker } from 'leaflet';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 
 export default class Marker extends Component {
@@ -14,7 +14,7 @@ export default class Marker extends Component {
       throw Error('No position prop provided.');
     }
 
-    this.marker = new leaflet.Marker(position, options);
+    this.marker = new LeafletMarker(position, options);
     this.marker.addTo(leafletMap);
 
     addListenersFromProps(this.marker, this.props);

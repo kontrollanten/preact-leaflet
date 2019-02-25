@@ -1,5 +1,5 @@
 import { Component } from 'preact';
-import leaflet from 'leaflet';
+import { TileLayer as LeafletTileLayer } from 'leaflet';
 
 class TileLayer extends Component {
   componentDidMount() {
@@ -13,7 +13,7 @@ class TileLayer extends Component {
       throw Error('TileLayer: url prop is required.');
     }
 
-    this.layer = new leaflet.TileLayer(url, options);
+    this.layer = new LeafletTileLayer(url, options);
     this.layer.addTo(leafletMap);
   }
 

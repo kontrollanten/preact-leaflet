@@ -1,5 +1,5 @@
 import { h, Component } from 'preact';
-import leaflet from 'leaflet';
+import { Map as LeafletMap } from 'leaflet';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 
 class Map extends Component {
@@ -10,7 +10,7 @@ class Map extends Component {
       ...options
     } = this.getProps({ leafletOptions: true });
 
-    const map = new leaflet.Map(this.ref, { zoom, ...options });
+    const map = new LeafletMap(this.ref, { zoom, ...options });
 
     addListenersFromProps(map, this.props);
 
