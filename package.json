@@ -1,5 +1,5 @@
 {
-  "name": "leaflet-preact",
+  "name": "preact-leaflet",
   "version": "1.0.0",
   "main": "index.js",
   "author": "kontrollanten <alexander@width.se>",
