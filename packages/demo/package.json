@@ -1,0 +1,19 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "parcel": "^1.11.0"
+  },
+  "dependencies": {
+    "preact": "^8.4.2",
+    "preact-leaflet": "1.0.0"
+  }
+}

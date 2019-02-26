@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { Map, TileLayer } from '../src';
+import { Map, TileLayer } from 'preact-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 export default () => (
