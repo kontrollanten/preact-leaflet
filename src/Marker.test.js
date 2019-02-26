@@ -43,12 +43,12 @@ describe('Maker', () => {
       title: 'hi there',
       zIndexOffset: 100,
     };
-    sandbox.spy(leaflet, 'Marker');
+    sandbox.spy(Marker, 'LayerType');
     mount(<Marker {...defaultProps} {...options} />);
 
     Object.keys(options)
       .forEach((option) => {
-        expect(leaflet.Marker).to.have.been.calledWith(sinon.match.any, sinon.match({
+        expect(Marker.LayerType).to.have.been.calledWith(sinon.match.any, sinon.match({
           [option]: options[option],
         }));
       });
@@ -58,7 +58,7 @@ describe('Maker', () => {
     const onSomeRandomEvent = sinon.spy();
     const wrapper = mount(<Marker {...defaultProps} onSomeRandomEvent={onSomeRandomEvent} />);
 
-    wrapper.instance().marker.fire('someRandomEvent', new Event('random'));
+    wrapper.instance().layer.fire('someRandomEvent', new Event('random'));
 
     expect(onSomeRandomEvent).to.have.been.calledWith(sinon.match({ bubbles: sinon.match.bool }));
   });
@@ -68,7 +68,7 @@ describe('Maker', () => {
     const wrapper = mount(<Marker {...defaultProps} onSunGoesDown={onSunGoesDown} />);
     wrapper.setProps({ onSunGoesDown: undefined });
 
-    wrapper.instance().marker.fire('sunGoesDown');
+    wrapper.instance().layer.fire('sunGoesDown');
 
     expect(onSunGoesDown).to.not.have.been.called;
   });
@@ -79,7 +79,7 @@ describe('Maker', () => {
     const onSunGoesUp = sinon.spy();
     wrapper.setProps({ onSunGoesUp });
 
-    wrapper.instance().marker.fire('sunGoesUp', new Event('sunGoesUp'));
+    wrapper.instance().layer.fire('sunGoesUp', new Event('sunGoesUp'));
 
     expect(onSunGoesUp).to.have.been.calledWith(sinon.match({ bubbles: false }));
   });
@@ -88,10 +88,10 @@ describe('Maker', () => {
     const onClose = sinon.spy();
     const wrapper = mount(<Marker {...defaultProps} onClose={onClose} />);
 
-    const { marker } = wrapper.instance();
+    const { layer } = wrapper.instance();
     wrapper.unmount();
 
-    marker.fire('close');
+    layer.fire('close');
 
     expect(onClose).to.not.have.been.called;
   });
@@ -100,16 +100,16 @@ describe('Maker', () => {
     const leafletMap = new leaflet.Map(document.createElement('div'));
     const wrapper = mount(<Marker {...defaultProps} leafletMap={leafletMap} />);
 
-    expect(leafletMap.hasLayer(wrapper.instance().marker)).to.equal(true);
+    expect(leafletMap.hasLayer(wrapper.instance().layer)).to.equal(true);
   });
 
   it('should remove marker from map upon unmount', () => {
     const leafletMap = new leaflet.Map(document.createElement('div'));
     const wrapper = mount(<Marker {...defaultProps} leafletMap={leafletMap} />);
-    const { marker } = wrapper.instance();
+    const { layer } = wrapper.instance();
 
     wrapper.unmount();
 
-    expect(leafletMap.hasLayer(marker)).to.equal(false);
+    expect(leafletMap.hasLayer(layer)).to.equal(false);
   });
 });
