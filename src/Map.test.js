@@ -77,6 +77,7 @@ describe('Map', () => {
 
     sandbox.stub(leaflet.Map.prototype, 'fitBounds');
     wrapper.setProps({ bounds });
+
     expect(leaflet.Map.prototype.fitBounds).to.have.been.calledWithExactly(bounds);
   });
 
@@ -121,6 +122,7 @@ describe('Map', () => {
     const onZoom = () => null;
     sandbox.spy(leaflet.Map.prototype, 'on');
     const wrapper = mount(<Map onZoom={onZoom} />);
+
     expect(leaflet.Map.prototype.on.getCalls().length).to.be.greaterThan(0);
 
     sandbox.spy(leaflet.Map.prototype, 'off');
