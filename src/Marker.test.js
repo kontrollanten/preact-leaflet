@@ -1,8 +1,8 @@
-import { mount } from 'enzyme';
 import { h } from 'preact';
 import { expect } from 'chai';
 import sinon from 'sinon';
 import leaflet from 'leaflet';
+import { mount } from '../test/enzyme';
 import Marker from './Marker';
 
 describe('Maker', () => {

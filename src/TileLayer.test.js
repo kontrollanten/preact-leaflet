@@ -1,8 +1,8 @@
 import { h } from 'preact';
-import { mount } from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
 import leaflet from 'leaflet';
+import { mount } from '../test/enzyme';
 import TileLayer from './TileLayer';
 
 describe('TileLayer', () => {

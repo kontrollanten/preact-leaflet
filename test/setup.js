@@ -4,7 +4,7 @@ import chai from 'chai';
 import sinonChai from 'sinon-chai';
 
 Enzyme.configure({
-  adapter: new PreactAdapter()
+  adapter: new PreactAdapter(),
 });
 
 chai.use(sinonChai);

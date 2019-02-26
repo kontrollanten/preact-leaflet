@@ -2,9 +2,9 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    'jest/globals': true,
+    jasmine: true,
   },
-  extends: 'airbnb',
+  extends: ['airbnb', 'plugin:jasmine/recommended'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -22,7 +22,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: [
-    'jest',
+    'jasmine',
     'react',
   ],
   rules: {
