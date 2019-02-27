@@ -1,7 +1,9 @@
 import { Component } from 'preact';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 
-const createLayer = (LayerType, firstArgProp) => {
+const createLayer = (LayerType, firstArgProp, {
+  componentName,
+} = {}) => {
   class Layer extends Component {
     componentDidMount() {
       const { children, leafletMap, ...props } = this.props;
@@ -47,6 +49,7 @@ const createLayer = (LayerType, firstArgProp) => {
   }
 
   Layer.LayerType = LayerType;
+  Layer.displayName = `createLayer(${componentName})`;
 
   return Layer;
 };
