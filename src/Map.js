@@ -24,11 +24,11 @@ class Map extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.center !== this.props.center) {
-      this.state.map.panTo(this.props.center);
+    if (this.hasPropChanged('center', prevProps) || this.hasPropChanged('zoom', prevProps)) {
+      this.state.map.setView(this.props.center, this.props.zoom || this.state.map.getZoom());
     }
 
-    if (prevProps.bounds !== this.props.bounds) {
+    if (this.hasPropChanged('bounds', prevProps)) {
       this.state.map.fitBounds(this.props.bounds);
     }
 
@@ -88,6 +88,10 @@ class Map extends Component {
         : mapOptions.indexOf(prop) === -1
       ))
       .reduce((props, prop) => ({ ...props, [prop]: this.props[prop] }), {});
+  }
+
+  hasPropChanged(prop, prevProps) {
+    return this.props[prop] !== prevProps[prop];
   }
 
   render() {
