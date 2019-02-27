@@ -1,17 +1,36 @@
 import { h, Component } from 'preact';
+import 'preact/debug';
 import { divIcon } from 'leaflet';
 import {
-  Map, Marker, Polyline, TileLayer,
+  Map, Marker, MarkerCluster, Polyline, TileLayer,
 } from '../src';
 import 'leaflet/dist/leaflet.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import './styles.css';
 import route from './long-route';
 
 const getRouteConfig = (hash) => {
   switch (hash) {
+    case '#cluster':
+      return {
+        mapCenter: [63.83919, 20.15069],
+        markerCluster: [
+          [63.8374896962485, 20.163206074534],
+          [63.9374896962485, 20.163206074534],
+          [63.7374896962485, 20.163206074534],
+          [63.8574896962485, 20.163206074534],
+          [63.8174896962485, 20.163206074534],
+          [63.8274896962485, 20.163206074534],
+          [63.8974896962485, 20.163206074534],
+        ],
+        markers: [],
+        polylines: [],
+        zoom: 8,
+      };
     case '#polyline':
       return {
         mapCenter: [63.83919, 20.15069],
+        markerCluster: false,
         markers: [
           [59.3367, 18.0667],
           [63.8374896962485, 20.163206074534],
@@ -24,6 +43,7 @@ const getRouteConfig = (hash) => {
     default:
       return {
         mapCenter: [59.3367, 18.0667],
+        markerCluster: false,
         markers: [],
         polylines: [],
         zoom: 10,
@@ -44,7 +64,7 @@ export default class App extends Component {
   }
 
   render(props, {
-    mapCenter, markers, polylines, zoom,
+    mapCenter, markerCluster, markers, polylines, zoom,
   }) {
     return (
       <div>
@@ -52,6 +72,9 @@ export default class App extends Component {
         <ul className="menu">
           <li>
             <a href="#simple">Show simple</a>
+          </li>
+          <li>
+            <a href="#cluster">Show cluster</a>
           </li>
           <li>
             <a href="#polyline">Show polyline and markers</a>
@@ -65,6 +88,13 @@ export default class App extends Component {
           {polylines.map(positions => (
             <Polyline positions={positions} />
           ))}
+          {markerCluster && (
+            <MarkerCluster key="cluster">
+              {markerCluster.map(position => (
+                <Marker key={position.join(',')} icon={divIcon()} position={position} />
+              ))}
+            </MarkerCluster>
+          )}
         </Map>
       </div>
     );

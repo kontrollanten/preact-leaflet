@@ -1,5 +1,6 @@
 import { Component } from 'preact';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
+import getOptions from './helpers/get-options';
 
 const createLayer = (LayerType, firstArgProp, {
   componentName,
@@ -18,9 +19,7 @@ const createLayer = (LayerType, firstArgProp, {
         console.error(`${firstArgProp} prop is required.`);
       }
 
-      const options = Object.keys(props)
-        .filter(p => (p !== firstArgProp && !p.match(/^on/)))
-        .reduce((acc, val) => ({ ...acc, [val]: props[val] }), {});
+      const options = getOptions(props, { exclude: firstArgProp });
 
       this.layer = new Layer.LayerType(props[firstArgProp], options);
       this.layer.addTo(leafletMap);
