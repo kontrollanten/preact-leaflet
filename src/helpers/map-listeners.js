@@ -1,5 +1,7 @@
+const onPropRegex = /on[A-Z](.*)/;
+
 const getProvidedEventListeners = props => Object.keys(props)
-  .filter(prop => prop.match(/on[A-Z](.*)/))
+  .filter(prop => prop.match(onPropRegex))
   .map(prop => ({
     callback: props[prop],
     event: prop.slice(2).replace(/^[A-Z]/, e => e.slice(0, 1).toLowerCase()),
@@ -29,5 +31,6 @@ const removeListenersFromProps = (inst, props, { filter } = {}) => {
 
 export {
   addListenersFromProps,
+  onPropRegex,
   removeListenersFromProps,
 };
