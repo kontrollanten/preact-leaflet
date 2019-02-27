@@ -90,6 +90,15 @@ describe('Map', () => {
     expect(wrapper.state('map').getCenter()).to.deep.include(center);
   });
 
+  it('should update the zoom upon changing zoom prop', () => {
+    const wrapper = mount(<Map center={[12, 13]} zoom={12} />);
+
+    const zoom = 2;
+    wrapper.setProps({ zoom });
+
+    expect(wrapper.state('map').getZoom()).to.equal(zoom);
+  });
+
   it('should add event listeners for each prop prefixed with on upon mount', () => {
     const onSomething = () => null;
     sandbox.spy(leaflet.Map.prototype, 'on');
