@@ -17,11 +17,21 @@ describe('TileLayer', () => {
   });
 
   it('should throw an error if no leafletMap prop is given', () => {
-    expect(() => mount(<TileLayer {...defaultProps} leafletMap={undefined} />)).to.throw(/leafletMap/);
+    sandbox.stub(console, 'error');
+    try {
+      mount(<TileLayer {...defaultProps} leafletMap={undefined} />);
+    } catch (error) {}
+
+    expect(console.error).to.have.been.calledWith(sinon.match(/leafletMap/));
   });
 
   it('should throw an describing error if no url prop is given', () => {
-    expect(() => mount(<TileLayer {...defaultProps} url="" />)).to.throw(/url/i);
+    sandbox.stub(console, 'error');
+    try {
+      mount(<TileLayer {...defaultProps} url="" />);
+    } catch (error) {}
+
+    expect(console.error).to.have.been.calledWith(sinon.match(/url/));
   });
 
   it('add layer to map', () => {

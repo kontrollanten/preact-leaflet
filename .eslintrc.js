@@ -34,6 +34,8 @@ module.exports = {
     {
       files: '*.test.js',
       rules: {
+        'no-console': 0,
+        'no-empty': ['error', { allowEmptyCatch: true }],
         'no-underscore-dangle': 0,
         'no-unused-expressions': 0,
       },
