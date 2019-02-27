@@ -96,6 +96,7 @@ class Map extends Component {
 
   render() {
     const children = this.props.children
+      .filter(c => c)
       .map(child => Object.assign(
         child,
         { attributes: { ...child.attributes, leafletMap: this.state.map } },
