@@ -17,11 +17,21 @@ describe('Maker', () => {
   });
 
   it('should throw an error if no leafletMap prop is provided', () => {
-    expect(() => mount(<Marker />)).to.throw(/leafletMap/);
+    sandbox.stub(console, 'error');
+    try {
+      mount(<Marker />);
+    } catch (error) {}
+
+    expect(console.error).to.have.been.calledWith(sinon.match(/leafletMap/));
   });
 
   it('should throw an error if position prop isnt provided', () => {
-    expect(() => mount(<Marker {...defaultProps} position={undefined} />)).to.throw(/position/);
+    sandbox.stub(console, 'error');
+    try {
+      mount(<Marker {...defaultProps} position={undefined} />);
+    } catch (error) {}
+
+    expect(console.error).to.have.been.calledWith(sinon.match(/position/));
   });
 
   it('should pass provided options props to Marker', () => {

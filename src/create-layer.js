@@ -7,11 +7,13 @@ const createLayer = (LayerType, firstArgProp) => {
       const { children, leafletMap, ...props } = this.props;
 
       if (!leafletMap) {
-        throw Error('Couldn\'t find leafletMap prop');
+        // eslint-disable-next-line no-console
+        console.error('Couldn\'t find leafletMap prop');
       }
 
       if (!props[firstArgProp]) {
-        throw Error(`${firstArgProp} prop is required.`);
+        // eslint-disable-next-line no-console
+        console.error(`${firstArgProp} prop is required.`);
       }
 
       const options = Object.keys(props)
