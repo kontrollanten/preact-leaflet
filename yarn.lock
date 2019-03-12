@@ -2898,10 +2898,10 @@ entities@^1.1.1, entities@~1.1.1:
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.2.tgz#bdfa735299664dfafd34529ed4f8522a275fea56"
   integrity sha512-f2LZMYl1Fzu7YSBKg+RoROelpOaNrcGmE9AZubeDfrCEia483oW4MI4VyFd5VNHIgQ/7qm1I0wUHK1eJnn2y2w==
 
-enzyme-adapter-preact-pure@1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/enzyme-adapter-preact-pure/-/enzyme-adapter-preact-pure-1.7.1.tgz#26263b08c5190c6e3c8118440bfc42fdaefc4d34"
-  integrity sha512-rwovBXAV8QdvQ1hIe59AQG1bMhez8uiX7fjDpr66nNR7NZcHEvQXNQZ/nBvlGlxrrg2vsVx+GOJSPyAXxlcGGA==
+enzyme-adapter-preact-pure@1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/enzyme-adapter-preact-pure/-/enzyme-adapter-preact-pure-1.8.0.tgz#6a30f16e60aa0e70b2e2ce6ad29fdd95ca9db8cf"
+  integrity sha512-mcJAPy8nX7f125hobjypuWDFcNcihq+aGqNAHhmylVULipZ+M70usOGZDDo5zxDjzKwkD4CMjnt5DB6kN1lY9g==
   dependencies:
     array.prototype.flatmap "^1.2.1"
     preact-render-to-string "^4.1.0"
