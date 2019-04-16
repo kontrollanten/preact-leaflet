@@ -31,14 +31,16 @@ class Map extends Component {
     if (this.hasPropChanged('bounds', prevProps)) {
       this.state.map.fitBounds(this.props.bounds);
     }
+    
+    if( prevProps !== this.props) {
+      removeListenersFromProps(this.state.map, prevProps, {
+        filter: ({ prop }) => !this.props[prop],
+      });
 
-    addListenersFromProps(this.state.map, this.props, {
-      filter: ({ prop }) => !prevProps[prop],
-    });
-
-    removeListenersFromProps(this.state.map, prevProps, {
-      filter: ({ prop }) => !this.props[prop],
-    });
+      addListenersFromProps(this.state.map, this.props, {
+        filter: ({ prop }) => !prevProps[prop],
+      });
+    }
   }
 
   componentWillUnmount() {
