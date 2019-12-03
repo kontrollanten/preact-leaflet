@@ -43,7 +43,7 @@
     "karma-coverage-istanbul-reporter": "2.1.1",
     "karma-jasmine": "2.0.1",
     "karma-mocha-reporter": "2.2.5",
-    "parcel": "1.12.3",
+    "parcel": "1.12.4",
     "sinon": "7.5.0",
     "sinon-chai": "3.3.0",
     "watchify": "3.11.1"
