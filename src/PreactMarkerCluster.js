@@ -1,4 +1,4 @@
-import { h, Component } from 'preact';
+import { h, Component, toChildArray } from 'preact';
 import leaflet from 'leaflet';
 import 'leaflet.markercluster';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
@@ -31,12 +31,12 @@ export default class MarkersCluster extends Component {
   }
 
   render() {
-    const children = this.props.children
+    const children = toChildArray(this.props.children)
       .filter(c => c)
       .map(child => (
         {
           ...child,
-          attributes: { ...child.attributes, leafletMap: this.layer },
+          props: { ...child.props, leafletMap: this.layer },
         }
       ));
 
