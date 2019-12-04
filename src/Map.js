@@ -1,4 +1,4 @@
-import { h, Component } from 'preact';
+import { h, Component, toChildArray } from 'preact';
 import { Map as LeafletMap } from 'leaflet';
 import { addListenersFromProps, removeListenersFromProps } from './helpers/map-listeners';
 
@@ -95,11 +95,11 @@ class Map extends Component {
   }
 
   render() {
-    const children = this.props.children
+    const children = toChildArray(this.props.children)
       .filter(c => c)
       .map(child => Object.assign(
         child,
-        { attributes: { ...child.attributes, leafletMap: this.state.map } },
+        { props: { ...child.props, leafletMap: this.state.map } },
       ));
 
     return (
