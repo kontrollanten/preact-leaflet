@@ -17,4 +17,25 @@ jobs:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run: yarn lint
       - run: yarn test:ci && yarn codecov
+  deploy:
+    docker:
+      - image: circleci/node:10.17-browsers
+    steps:
+      - run:
+          name: Auth against NPM
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
 
+worflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          filters:
+            tags:
+              only: /^v.*/
+          requires:
+            - build

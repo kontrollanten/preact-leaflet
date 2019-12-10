@@ -1,6 +1,6 @@
 {
   "name": "preact-leaflet",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "index.js",
   "author": "kontrollanten <stambanan@pm.me>",
   "license": "MIT",
@@ -8,6 +8,7 @@
     "demo": "parcel e2e/index.html",
     "demo:build": "parcel build e2e/index.html",
     "lint": "eslint src e2e",
+    "release": "standard-version",
     "test": "karma start",
     "test:ci": "NODE_ENV=test karma start"
   },
@@ -46,6 +47,7 @@
     "parcel": "1.12.4",
     "sinon": "7.5.0",
     "sinon-chai": "3.3.0",
+    "standard-version": "^7.0.1",
     "watchify": "3.11.1"
   }
 }
