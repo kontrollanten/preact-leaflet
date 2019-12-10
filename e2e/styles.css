@@ -1,6 +1,58 @@
 body,
 body > div{
   height: 100vh;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+header {
+  top: 0;
+  height: 15vh;
+  position: relative;
+}
+
+header h1 {
+  margin-top: 0;
+  padding-top: 20px;
+  text-align: center;
+}
+
+ul.menu {
+  position: absolute;
+  bottom: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  text-align: center;
+}
+
+ul.menu li {
+  display: table-cell;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+ul.menu li:not(.active):hover {
+  background-color: rgba(181, 226, 140, 0.2);
+}
+
+ul.menu li.active {
+  background-color: rgba(181, 226, 140, 0.6);
+}
+
+ul.menu li a {
+  display: block;
+}
+
+.leaflet-container {
+  height: 85vh !important;
 }
 
 .leaflet-div-icon {

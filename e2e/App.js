@@ -1,4 +1,4 @@
-import { h, Component } from 'preact';
+import { h, Component, Fragment } from 'preact';
 import 'preact/debug';
 import { divIcon } from 'leaflet';
 import {
@@ -67,19 +67,21 @@ export default class App extends Component {
     mapCenter, markerCluster, markers, polylines, zoom,
   }) {
     return (
-      <div>
-        <h1>preact-leaflet in</h1>
-        <ul className="menu">
-          <li>
-            <a href="#simple">Show simple</a>
-          </li>
-          <li>
-            <a href="#cluster">Show cluster</a>
-          </li>
-          <li>
-            <a href="#polyline">Show polyline and markers</a>
-          </li>
-        </ul>
+      <Fragment>
+        <header>
+          <h1>preact-leaflet</h1>
+          <ul className="menu">
+            {[
+              { link: '#simple', title: 'Simple' },
+              { link: '#cluster', title: 'Cluster' },
+              { link: '#polyline', title: 'Polyline and markers' },
+            ].map(({ link, title }) => (
+              <li className={window.location.hash === link ? 'active' : ''}>
+                <a href={link}>{title}</a>
+              </li>
+            ))}
+          </ul>
+        </header>
         <Map center={mapCenter} style={{ height: '100%' }} zoom={zoom}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {markers.map(position => (
@@ -96,7 +98,7 @@ export default class App extends Component {
             </MarkerCluster>
           )}
         </Map>
-      </div>
+      </Fragment>
     );
   }
 }
