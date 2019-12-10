@@ -2,7 +2,7 @@
   "name": "preact-leaflet",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "kontrollanten <alexander@width.se>",
+  "author": "kontrollanten <stambanan@pm.me>",
   "license": "MIT",
   "scripts": {
     "demo": "parcel e2e/index.html",
@@ -12,9 +12,9 @@
     "test:ci": "NODE_ENV=test karma start"
   },
   "dependencies": {
-    "leaflet": "^1.4.0",
+    "leaflet": "1.6.0",
     "leaflet.markercluster": "^1.4.1",
-    "preact": "^10.0.0"
+    "preact": "10.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.7.5",
