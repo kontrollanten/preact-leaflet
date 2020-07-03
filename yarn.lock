@@ -6402,10 +6402,10 @@ karma-babel-preprocessor@8.0.1:
   resolved "https://registry.yarnpkg.com/karma-babel-preprocessor/-/karma-babel-preprocessor-8.0.1.tgz#63b33cc7b5b3b5c7815ec453f7df58fb88345af1"
   integrity sha512-5upyawNi3c7Gg6tPH1FWRVTmUijGf3v1GV4ScLM/2jKdDP18SlaKlUpu8eJrRI3STO8qK1bkqFcdgAA364nLYQ==
 
-karma-browserify@6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/karma-browserify/-/karma-browserify-6.1.0.tgz#ac23be7172d1ae25c5f5f34b09d3c36cd99abb3e"
-  integrity sha512-FWOuATeil6dbm2nwWIbSFG0Ad8w3PcuBNs05zcqnMiuXEdwos/o6B26HF+NcYwTt3o7LTOGWiuXK9cuuhoPeaw==
+karma-browserify@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/karma-browserify/-/karma-browserify-7.0.0.tgz#60f443f991ecfbbfb5737a9fd76e73b8b6eb9a57"
+  integrity sha512-SLgh1dmF2eZEj3glrmTD2CMJRGZwEiKA6k2hBr2+2JDC4JMU1dlsvBKpV66Lvi/tbj3H9qA+Vl/FdIcfPRrJpA==
   dependencies:
     convert-source-map "^1.1.3"
     hat "^0.0.3"
