@@ -7,12 +7,12 @@
       "automerge": true,
       "automergeType": "pr",
       "packagePatterns": [
-        "babel-jest",
+        "browserify",
         "chai",
-        "enzyme",
-        "eslint",
-        "jest",
-        "sinon"
+        "^enzyme",
+        "^eslint",
+        "^karma",
+        "^sinon"
       ]
     }
   ]
