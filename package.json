@@ -46,7 +46,7 @@
     "karma-mocha-reporter": "2.2.5",
     "parcel": "1.12.4",
     "sinon": "9.0.2",
-    "sinon-chai": "3.4.0",
+    "sinon-chai": "3.5.0",
     "standard-version": "7.0.1",
     "watchify": "3.11.1"
   }
