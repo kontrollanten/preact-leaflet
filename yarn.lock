@@ -4993,18 +4993,6 @@ fast-glob@^2.2.2:
     merge2 "^1.2.3"
     micromatch "^3.1.10"
 
-fast-glob@^2.2.6:
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-2.2.7.tgz#6953857c3afa475fff92ee6015d52da70a4cd39d"
-  integrity sha512-g1KuQwHOZAmOZMuBtHdxDtju+T2RT8jgCC9aANsbpdiDDTSnjgfuVsIBNKbUeJI3oKMRExcfNDtJl4OhbffMsw==
-  dependencies:
-    "@mrmlnc/readdir-enhanced" "^2.2.1"
-    "@nodelib/fs.stat" "^1.1.2"
-    glob-parent "^3.1.0"
-    is-glob "^4.0.0"
-    merge2 "^1.2.3"
-    micromatch "^3.1.10"
-
 fast-json-stable-stringify@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.0.0.tgz#d5142c0caee6b1189f87d3a76111064f86c8bbf2"
@@ -6360,12 +6348,12 @@ jasmine-core@^3.6.0, jasmine-core@~3.6.0:
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.6.0.tgz#491f3bb23941799c353ceb7a45b38a950ebc5a20"
   integrity sha512-8uQYa7zJN8hq9z+g8z1bqCfdC8eoDAeVnM5sfqs7KHv9/ifoJ500m018fpFc7RDaO6SWCLCXwo/wPSNcdYTgcw==
 
-jasmine@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/jasmine/-/jasmine-3.6.1.tgz#a20456b309a669b547a3c24bb2120f16f70cfc65"
-  integrity sha512-Jqp8P6ZWkTVFGmJwBK46p+kJNrZCdqkQ4GL+PGuBXZwK1fM4ST9BizkYgIwCFqYYqnTizAy6+XG2Ej5dFrej9Q==
+jasmine@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/jasmine/-/jasmine-3.6.2.tgz#a8df3fc92f2ef322bcdafb890f744f3ff5751e86"
+  integrity sha512-Uc0o2MRnC8TS1MjDrB8jE1umKEo2mflzGvdg0Ncs+yuLtOJ+uz/Wz8VmGsNGtuASr8+E0LDgPkOpvdoC76m5WQ==
   dependencies:
-    fast-glob "^2.2.6"
+    glob "^7.1.6"
     jasmine-core "~3.6.0"
 
 js-levenshtein@^1.1.3:
