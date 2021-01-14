@@ -15,7 +15,7 @@
   "dependencies": {
     "leaflet": "1.7.1",
     "leaflet.markercluster": "^1.4.1",
-    "preact": "10.5.9"
+    "preact": "10.5.10"
   },
   "devDependencies": {
     "@babel/core": "7.12.10",
