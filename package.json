@@ -48,6 +48,6 @@
     "sinon": "9.2.4",
     "sinon-chai": "3.5.0",
     "standard-version": "9.1.0",
-    "watchify": "3.11.1"
+    "watchify": "4.0.0"
   }
 }
