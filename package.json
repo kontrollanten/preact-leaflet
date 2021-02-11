@@ -18,9 +18,9 @@
     "preact": "10.5.12"
   },
   "devDependencies": {
-    "@babel/core": "7.12.13",
-    "@babel/plugin-transform-react-jsx": "7.12.13",
-    "@babel/preset-env": "7.12.13",
+    "@babel/core": "7.12.16",
+    "@babel/plugin-transform-react-jsx": "7.12.16",
+    "@babel/preset-env": "7.12.16",
     "@babel/preset-react": "7.12.13",
     "babel-plugin-istanbul": "6.0.0",
     "babelify": "10.0.0",
